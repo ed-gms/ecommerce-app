@@ -6,9 +6,18 @@ body {
   background-size: cover;
 }
 
-.App-logo {
+.Grid {
+  margin: 5%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+.animated-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 100px;
+}
+.static-logo {
+  height: 100px;
 }
 
 .App-header {
