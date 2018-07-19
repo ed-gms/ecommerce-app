@@ -18,6 +18,7 @@ body {
 }
 .static-logo {
   height: 100px;
+  cursor: pointer;
 }
 
 .App-header {

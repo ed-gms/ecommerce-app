@@ -3,6 +3,7 @@ import logo from './logo.png';
 import './App.css';
 import Card from './components/Card';
 import Loading from './components/Loading';
+import Nav from './components/Nav';
 
 class App extends Component {
   constructor(props) {
@@ -59,6 +60,14 @@ class App extends Component {
     });
   };
 
+  openNav = () => {
+    document.getElementById('myNav').style.width = '100%';
+  };
+
+  closeNav = () => {
+    document.getElementById('myNav').style.width = '0%';
+  };
+
   render() {
     const { toggleLogo, cards, loading } = this.state;
     return (
@@ -70,8 +79,9 @@ class App extends Component {
             alt="logo"
             onMouseEnter={this.toggleLogo}
             onMouseLeave={this.toggleLogo}
+            onClick={this.openNav}
           />
-          <h1 className="App-title">Welcome to React</h1>
+          <Nav closeNav={this.closeNav} />
         </header>
         {loading ? (
           <Loading />
