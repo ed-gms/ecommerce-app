@@ -2,14 +2,45 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import Card from './components/Card';
+import Loading from './components/Loading';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       toggleLogo: true,
-      cards: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }],
+      loading: true,
+      cards: [
+        {
+          id: 0,
+          animation: 'card',
+        },
+        {
+          id: 1,
+          animation: 'card',
+        },
+        {
+          id: 2,
+          animation: 'card',
+        },
+        {
+          id: 3,
+          animation: 'card',
+        },
+        {
+          id: 4,
+          animation: 'card',
+        },
+        {
+          id: 5,
+          animation: 'card',
+        },
+      ],
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ loading: false }), 3000);
   }
 
   toggleLogo = () => {
@@ -18,20 +49,39 @@ class App extends Component {
     }));
   };
 
+  clickCard = card => {
+    const { cards } = this.state;
+    cards[card.id].animation = 'card animated zoomOut';
+    console.log(cards);
+
+    this.setState({
+      cards,
+    });
+  };
+
   render() {
-    const { toggleLogo, cards } = this.state;
+    const { toggleLogo, cards, loading } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img
             src={logo}
-            className={toggleLogo ? 'static-logo' : 'animated-logo'}
+            className={toggleLogo ? 'static-logo' : 'static-logo animated jello'}
             alt="logo"
-            onClick={this.toggleLogo}
+            onMouseEnter={this.toggleLogo}
+            onMouseLeave={this.toggleLogo}
           />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <div className="Grid">{cards.map(card => <Card duration={150} key={card.id} />)}</div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="Grid">
+            {cards.map(card => (
+              <Card duration={150} key={card.id} card={card} clickCard={this.clickCard} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
