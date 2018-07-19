@@ -5,6 +5,10 @@
   position: relative;
 }
 
+h1 {
+  color: white;
+}
+
 .cube1,
 .cube2 {
   background-color: white;

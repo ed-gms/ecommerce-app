@@ -32,16 +32,6 @@ class App extends Component {
     }));
   };
 
-  // clickCard = card => {
-  //   const { cards } = this.state;
-  //   cards[card.id].animation = 'card animated zoomOut';
-  //   console.log(cards);
-
-  //   this.setState({
-  //     cards,
-  //   });
-  // };
-
   showBack = card => {
     const { cards } = this.state;
     cards[card.id].animation = 'card card-flip';
@@ -79,6 +69,12 @@ class App extends Component {
             onMouseLeave={this.toggleLogo}
             onClick={this.openNav}
           />
+          <h1
+            className={toggleLogo ? 'menu-hidden' : 'menu animated bounceInDown'}
+            onClick={this.openNav}
+          >
+            Menu
+          </h1>
           <Nav closeNav={this.closeNav} />
         </header>
         {loading ? (
