@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Nav.css';
 
 const Nav = props => (
   <div id="myNav" className="overlay">
-    <a href="" className="closebtn" onClick={() => props.closeNav()}>
+    <a className="closebtn" onClick={() => props.closeNav()}>
       &times;
     </a>
     <div className="overlay-content">
-      <a href="">Vitamin</a>
-      <a href="">Suplements</a>
+      <Link to="/" onClick={() => props.closeNav()}>
+        Home
+      </Link>
+      <Link to="/product" onClick={() => props.closeNav()}>
+        Product
+      </Link>
       <a href="">Apparel</a>
       <a href="">Contact</a>
     </div>
