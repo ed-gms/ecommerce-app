@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import logo from './logo.png';
 import './App.css';
 import Home from './components/Home';
-import Product from './components/Product';
 import Nav from './components/Nav';
+import ProductDetails from './components/ProductDetails';
+import PgNotFound from './components/PgNotFound';
 import data from './data/data.json';
 
 class App extends Component {
@@ -81,8 +82,27 @@ class App extends Component {
           </header>
 
           <Switch>
-            <Route exact path="/" render={props => <Home cards={cards} loading={loading} />} />
-            <Route path="/product" component={Product} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  cards={cards}
+                  loading={loading}
+                  showBack={this.showBack}
+                  showFront={this.showFront}
+                />
+              )}
+            />
+
+            <Route
+              path="/product/:id"
+              render={props => {
+                const cardIndex = props.location.pathname.replace('/product/', '');
+                return <ProductDetails card={cards[cardIndex]} />;
+              }}
+            />
+            <Route component={PgNotFound} />
           </Switch>
         </div>
       </Router>

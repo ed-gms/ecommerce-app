@@ -14,8 +14,8 @@ const Nav = props => (
       <Link to="/product" onClick={() => props.closeNav()}>
         Product
       </Link>
-      <a href="">Apparel</a>
-      <a href="">Contact</a>
+      <span>Apparel</span>
+      <span>Contact</span>
     </div>
   </div>
 );

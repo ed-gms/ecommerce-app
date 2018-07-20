@@ -13,8 +13,8 @@ const Home = props => (
             duration={150}
             key={card.id}
             card={card}
-            showBack={this.showBack}
-            showFront={this.showFront}
+            showBack={props.showBack}
+            showFront={props.showFront}
           />
         ))}
       </div>
