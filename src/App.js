@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import logo from './logo.png';
 import './App.css';
-import Card from './components/Card';
-import Loading from './components/Loading';
 import Home from './components/Home';
 import Product from './components/Product';
 import Nav from './components/Nav';
@@ -83,24 +81,9 @@ class App extends Component {
           </header>
 
           <Switch>
-            <Route exact path="/" render={props => <Home cards={this.state.cards} />} />
-            <Route exact path="/product" component={Product} />
+            <Route exact path="/" render={props => <Home cards={cards} loading={loading} />} />
+            <Route path="/product" component={Product} />
           </Switch>
-          {/* {loading ? (
-            <Loading />
-          ) : (
-            <div className="Grid animated bounceInUp">
-              {cards.map(card => (
-                <Card
-                  duration={150}
-                  key={card.id}
-                  card={card}
-                  showBack={this.showBack}
-                  showFront={this.showFront}
-                />
-              ))}
-            </div>
-          )} */}
         </div>
       </Router>
     );
